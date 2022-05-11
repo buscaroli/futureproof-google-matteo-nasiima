@@ -20,6 +20,11 @@ Changelog
 Bugs
 - :)
 
+Testing
+1. we didnt have time to test the server, however we managed to get 5 tests to pass on the client side, 
+we used jest and jest -environment -jsdom to do run the test
+
+
   Wins & Challenges
   
   1. Fully functioning features
