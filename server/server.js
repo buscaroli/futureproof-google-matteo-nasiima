@@ -39,13 +39,13 @@ app.get('/links/random', async (req, res) => {
 })
 
 app.post('/links', (req, res) => {
-  let term = req.body
+  let term = req.body.term
 
   console.log('server.js POST links', term)
   // getData(term.term)
 
   // console.log(typeof term.term)
-  getData(term.term)
+  getData(term)
 
   res.send()
 })
