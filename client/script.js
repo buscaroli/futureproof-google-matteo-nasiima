@@ -112,6 +112,7 @@ function createAndAppendCard(movie) {
   const linkElement = document.createElement('a')
   linkElement.href = linkText
   linkElement.textContent = 'Visit Page' // TODO value or textContent ?!?
+  linkElement.classList.add('card__link')
 
   card.append(titleElement)
   card.append(yearElement)

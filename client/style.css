@@ -158,18 +158,22 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+   
+  }
+
+  .movieCard {
     background: rgb(186, 215, 186);
-    margin: 20px;
-    padding: 10px;
-    width: 300px;
-    min-height: 50px;
-    display: grid;
-    grid-template-rows: 20px 50px 1fr 50px;
-    border-radius: 10px;
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
-    transition: all 0.2s;
+      margin: 20px;
+      padding: 10px;
+      width: 300px;
+      min-height: 50px;
+      
+      border-radius: 10px;
+      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+      transition: all 0.2s;
   }
   
+
   
   .card__link {
  
