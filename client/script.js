@@ -2,6 +2,10 @@ const searchInput = document.querySelector('#search-input')
 const searchButton = document.querySelector('.search-btn')
 const resultSection = document.querySelector('#results')
 const form = document.querySelector('.search-btns')
+const content = document.querySelector('.content-section')
+const luckyBtn = document.queryCommandIndeterm('.lucky-btn')
+
+let savedResults = []
 
 searchInput.addEventListener('keydown', function (event) {
   resultSection.innerHTML = ''
@@ -23,27 +27,19 @@ searchButton.addEventListener('click', function (event) {
   }
 })
 
-// function search() {
-//   const input = searchInput.value
-
-//   window.location.href =
-//     'https://www.google.com/search?q=' +
-//     input +
-//     '&rlz=1C5CHFA_enNZ948NZ948&oq=' +
-//     input +
-//     '&aqs=chrome.0.69i59l2j46i175i199i433j46i199i291i433j46j0i433j0j69i60.875j0j9&sourceid=chrome&ie=UTF-8'
-// }
-
-////
-
-function redirect() {
-  window.open('https://www.bbc.co.uk/bitesize/guides/zbfny4j/revision/4')
-}
+luckyBtn.addEventListener('click', getRandom)
 
 function getRandom() {
-  fetch('http://localhost:3000/links/random', { mode: 'no-cors' })
-    .then((response) => response.json())
-    .then((data) => console.log('script.js, getrandom() -> ', data))
+  if (savedResults.length === 0) {
+    window.open('https://http.cat/405')
+  } else {
+    let randomMovieIndex = Math.floor(Math.random() * savedResults.length)
+    console.log('lucky -> ', savedResults[randomMovieIndex].Poster)
+    window.open(savedResults[randomMovieIndex].Poster)
+  }
+  let randomMovieIndex = Math.floor(Math.random() * savedResults.length)
+  console.log('lucky -> ', savedResults[randomMovieIndex].Poster)
+  window.open(savedResults[randomMovieIndex].Poster)
 }
 
 // sends a POSt request to our server
@@ -79,6 +75,12 @@ function getLinks() {
       console.log('script.js, getLinks() -> ', data)
       // window.location.reload()
 
+      savedResults = data
+
+      let newArray = savedResults.filter((movie) => movie.Poster !== 'N/A')
+      savedResults = newArray
+      console.log('movies with links -> ', savedResults)
+
       createCards(data)
     })
 }
@@ -113,10 +115,14 @@ function createAndAppendCard(movie) {
   linkElement.href = linkText
   linkElement.textContent = 'Visit Page' // TODO value or textContent ?!?
   linkElement.classList.add('card__link')
+  linkElement.target = '_blank'
 
   card.append(titleElement)
   card.append(yearElement)
-  card.append(linkElement)
+
+  if (linkText !== 'N/A') {
+    card.append(linkElement)
+  }
 
   resultSection.append(card)
 }
