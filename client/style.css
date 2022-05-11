@@ -152,6 +152,49 @@ header {
 
 
 
+/* cards */
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background: rgb(186, 215, 186);
+    margin: 20px;
+    padding: 10px;
+    width: 300px;
+    min-height: 50px;
+    display: grid;
+    grid-template-rows: 20px 50px 1fr 50px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+    transition: all 0.2s;
+  }
+  
+  
+  .card__link {
+ 
+    position: relative;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .card__link::after {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    content: "";
+    width: 0%;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.6);
+    transition: all 0.5s;
+  }
+  
+  
+  
+  
+
+/* footer */
+
 footer {
     background-color: #F2F2F2;
     height: 100px;
@@ -196,4 +239,3 @@ footer {
 .lower-right-footer li {
     margin-left: 40px;
 }
-
