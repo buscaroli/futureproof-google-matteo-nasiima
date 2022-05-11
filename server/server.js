@@ -9,35 +9,28 @@ app.use(cors())
 // making the server available for import (in this case from index.js)
 module.exports = app
 
-// We are going to save the links from google in this array
-let dataArray = [
-  {
-    Title: 'Ace Ventura: When Nature Calls',
-    Year: '1995',
-    imdbID: 'tt0112281',
-    Type: 'movie',
-    Poster:
-      'https://m.media-amazon.com/images/M/MV5BNGFiYTgxZDctNGI4OS00MWU1LWIwOGUtZmMyNGQxYjVkZjQ3XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg',
-  },
-]
+// We are going to save the movies in this array
+let dataArray = []
 
 app.get('/links', (req, res) => {
   res.send(dataArray)
 })
 
-app.get('/links/random', async (req, res) => {
-  const isArrayEmpty = dataArray.length === 0 ? true : false
-  console.log('server.js isArrayEmpty -> ', isArrayEmpty)
+// app.get('/links/random', async (req, res) => {
+//   const isArrayEmpty = dataArray.length === 0 ? true : false
+//   console.log('server.js isArrayEmpty -> ', isArrayEmpty)
 
-  if (isArrayEmpty) {
-    getData('spongebob')
-  } else {
-    let randomAddress = getRandom()
-    console.log('randomAddress ->', randomAddress)
-    res.send(randomAddress)
-  }
-})
+//   if (isArrayEmpty) {
+//     getData('spongebob')
+//   } else {
+//     let randomAddress = getRandom()
+//     console.log('randomMovie ->', randomMovie)
+//     res.send(randomMovie)
+//   }
+// })
 
+// receives the POST request from sendSearchTerm and the term is what was
+// in the search Bar
 app.post('/links', (req, res) => {
   let term = req.body.term
 
@@ -45,11 +38,14 @@ app.post('/links', (req, res) => {
   // getData(term.term)
 
   // console.log(typeof term.term)
+
+  // we call the getData function
   getData(term)
 
   res.send()
 })
 
+// it fetches the movies from the omdb api
 function getData(searchTerm = 'nature') {
   axios('https://www.omdbapi.com/?', {
     params: {
@@ -58,6 +54,8 @@ function getData(searchTerm = 'nature') {
     },
   }).then((response) => {
     console.log('==========', response.data.Search)
+
+    // it saves the movies from the api into our database array
     dataArray = response.data.Search
   })
 }
