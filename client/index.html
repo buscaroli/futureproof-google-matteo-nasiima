@@ -7,10 +7,11 @@
     <link rel="icon" href="./image/logo.jpg">
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/9cab11bfa7.js" crossorigin="anonymous"></script>
+    <script defer src="./script.js"></script>
     <title>Google</title>
 </head>
 <body>
-    <!-- Header -->
+
     <header>
         <nav class="navbar">
             <ul>
@@ -35,7 +36,7 @@
         </nav>
     </header>
 
-    <!-- Content -->
+
     <section class="content-section">
         <div class="content-wrapper">
             <img class="logo-img" src="./image/google-no-bg.png" alt="Google Logo Image">
@@ -44,13 +45,25 @@
                 <input id="search-input" class="search-input" type="text">
                 <i class="fas fa-microphone"></i>
             </div>
-            <div class="search-btns">
-                <button class="google-search-btn">Search</button>
-                <button class="lucky-search-btn">lucky button</button>
+            <form class="search-btns">
+                <!-- <input class="search-btn" type="button" >Search</input>
+                <input class="lucky-btn" type="button" onclick="redirect();">lucky button</input> -->
+
+
+                <button class="search-btn">Search</button>
+
+
+                <button class="lucky-btn"  type="submit" onclick="redirect();">lucky button</button>
+                </form>
            
     </section>
 
-    <!-- Footer -->
+
+
+
+
+
+
     <footer>
         
         <div class="footer-content lower-footer">
