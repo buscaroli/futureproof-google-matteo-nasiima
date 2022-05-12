@@ -52,4 +52,9 @@ describe('client/index.html', () => {
     const luckyBtn = document.querySelector('.lucky-btn')
     expect(luckyBtn).toBeTruthy()
   })
+
+  it('tests that cards has an id of results', () => {
+    const cards = document.querySelector('#results')
+    expect(cards).toBeTruthy()
+  })
 })
