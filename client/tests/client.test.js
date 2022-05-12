@@ -53,8 +53,16 @@ describe('client/index.html', () => {
     expect(luckyBtn).toBeTruthy()
   })
 
-  it('tests that cards has an id of results', () => {
-    const cards = document.querySelector('#results')
-    expect(cards).toBeTruthy()
+  // checks if cards has a class of card, returns true or false
+  it('tests that cards has a class of cards', () => {
+    const cards = document.querySelector('.cards')
+    const cardsHasClassOfCards = cards.classList.contains('cards')
+    console.log(cardsHasClassOfCards)
+    expect(cardsHasClassOfCards).toBeTruthy()
   })
+
+  
+
+
+
 })
