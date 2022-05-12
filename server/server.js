@@ -14,10 +14,11 @@ module.exports = app
 let dataArray = []
 
 app.get('/links', (req, res) => {
-  if(dataArray.length === 0) {
+  if (dataArray.length === 0) {
     res.status(404)
   } else {
-  res.send(dataArray)}
+    res.send(dataArray)
+  }
 })
 
 // app.get('/links/random', async (req, res) => {

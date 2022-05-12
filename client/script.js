@@ -3,7 +3,7 @@ const searchButton = document.querySelector('.search-btn')
 const resultSection = document.querySelector('#results')
 const form = document.querySelector('.search-btns')
 const content = document.querySelector('.content-section')
-const luckyBtn = document.queryCommandIndeterm('.lucky-btn')
+const luckyBtn = document.querySelector('.lucky-btn')
 
 let savedResults = []
 
@@ -125,4 +125,6 @@ function createAndAppendCard(movie) {
   }
 
   resultSection.append(card)
+
+  searchInput.value = ''
 }
