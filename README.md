@@ -10,6 +10,7 @@ Enter into the repo folder `cd futureproof-google-matteo-nasiima`
 To run the server:
 ``` bash
   cd server
+  npm i
   npm run start
 ```
 
