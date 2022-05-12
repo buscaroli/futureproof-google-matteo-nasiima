@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const { restart } = require('nodemon')
 const axios = require('axios').default
 
 const app = express()
@@ -13,7 +14,10 @@ module.exports = app
 let dataArray = []
 
 app.get('/links', (req, res) => {
-  res.send(dataArray)
+  if(dataArray.length === 0) {
+    res.status(404)
+  } else {
+  res.send(dataArray)}
 })
 
 // app.get('/links/random', async (req, res) => {
