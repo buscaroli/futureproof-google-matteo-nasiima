@@ -1,6 +1,7 @@
 const request = require('supertest')
 const server = require('../server.js')
 
+// API KEY Restricted to 1000 access per day
 describe('Testing the Routes of the server', () => {
   let api
   const port = 5500
@@ -18,8 +19,22 @@ describe('Testing the Routes of the server', () => {
     done()
   })
 
-  it('responds with a status of 404', (done) => {
-    request(api).get('/links').expect(404)
-    done()
+  it('respsonds to a GET request to / with an HTTP response of 200', () => {
+    request(api).get('/').expect(200)
+  })
+
+  it('responds to a POST request to /links with an HTTP response of 200(OK) and it tests the returned array has one or more elements', async () => {
+    const titleToSearch = JSON.stringify({ term: 'lord' })
+
+    const response = await request(api).post('/links').send(titleToSearch)
+    console.log('=====', JSON.parse(response.text))
+    const parsedResponse = JSON.parse(response.text)
+    expect(parsedResponse.length > 0).toBeTruthy()
+  })
+
+  it('responds to a POST request to /links with an HTTP response of 200 (OK) and returns a string which contains the word "nature" if the request has no title', async () => {
+    const response = await request(api).post('/links').send('')
+    console.log(response.text)
+    expect(response.text).toMatch(/nature/i)
   })
 })
