@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require('path')
 const cors = require('cors')
 const axios = require('axios').default
 
@@ -11,6 +12,10 @@ module.exports = app
 
 // We are going to save the movies in this array
 let dataArray = []
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './welcome.html'))
+})
 
 // Receives the POST request from sendSearchTerm.
 // The term is what was in the search Bar.
