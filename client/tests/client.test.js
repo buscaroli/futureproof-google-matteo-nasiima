@@ -57,12 +57,44 @@ describe('client/index.html', () => {
   it('tests that cards has a class of cards', () => {
     const cards = document.querySelector('.cards')
     const cardsHasClassOfCards = cards.classList.contains('cards')
-    console.log(cardsHasClassOfCards)
+    // console.log(cardsHasClassOfCards)
     expect(cardsHasClassOfCards).toBeTruthy()
   })
 
-  
+  it('tests that the element with a class of "navbar" has anchor tags with an "href" attribute', () => {
+    const navbar = document.querySelector('.navbar')
+    const anchorTags = navbar.querySelectorAll('a')
+    const anchorTagsArray = Array.from(anchorTags)
+    // console.log('array -> ', anchorTagsArray)
+    const haveHref = anchorTagsArray.every((tag) => tag.hasAttribute('href'))
+    // console.log(haveHref)
+    expect(haveHref).toBeTruthy()
+  })
 
+  it('tests that the element with a class of "navbar" has anchor tags with text (not empty)', () => {
+    const navbar = document.querySelector('.navbar')
+    const anchorTags = navbar.querySelectorAll('a')
+    const anchorTagsArray = Array.from(anchorTags)
+    const haveText = anchorTagsArray.every((tag, index) => {
+      // print the index of the anchor tag with an empty text for debugging
+      if (tag.textContent === '') console.log('empty tag at index: ', index)
+      return tag.textContent !== ''
+    })
+    console.log(haveText)
+    expect(haveText).toBeTruthy()
+  })
 
+  it('tests that the footer exists', () => {
+    const footer = document.querySelector('.footer-content')
+    const anchorTags = footer.querySelectorAll('a')
+    const anchorTagsArray = Array.from(anchorTags)
 
+    const haveText = anchorTagsArray.every((tag, index) => {
+      // print the index of the anchor tag with an empty text for debugging
+      if (tag.textContent === '') console.log('empty tag at index: ', index)
+      return tag.textContent !== ''
+    })
+    console.log(haveText)
+    expect(haveText).toBeTruthy()
+  })
 })
